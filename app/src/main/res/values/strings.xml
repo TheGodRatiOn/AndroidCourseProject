@@ -1,0 +1,54 @@
+<resources>
+    <string name="app_name">AndroidCourseProject</string>
+    <string name="task_1_name">Task 1</string>
+    <string name="task_2_name">Task 2</string>
+    <string name="task_3_name">Task 3</string>
+    <string name="edit_text">Edit text</string>
+    <string name="label_string">Label</string>
+    <string name="change_label_colour">Change label colour</string>
+    <string name="hide_list_button_text">Hide list</string>
+    <string name="toast_button_text">Toast</string>
+    <string name="toast_text">Toast Button Example Text</string>
+    <string name="main_activity_bar_name">Main Activity Name</string>
+    <string name="first_task_activity_one_name">First Screen Activity Name</string>
+    <string name="round_button_text">FAB</string>
+    <string name="smiling_face_icon_description">Smiling face icon image</string>
+    <string name="natNum">Nat</string>
+    <string name="screenTitle">SequenceStorage \n Element Screen</string>
+    <string name="someLongText">Some Long Text</string>
+    <string name="fibNum">Fib</string>
+    <string name="colNum">Col</string>
+    <string name="long_text_resource">
+        Why are we still here?\n
+        Just to suffer?\n
+        Every night I can feel my leg…\n
+        and my arm…\n
+        even my fingers. \n
+        The body I\'ve lost…\n
+        the comrades I\'ve lost… \n
+        won\'t stop hurting…\n
+        Why are we still here?\n
+        Just to suffer?\n
+        Every night I can feel my leg…\n
+        and my arm…\n
+        even my fingers. \n
+        The body I\'ve lost…\n
+        the comrades I\'ve lost… \n
+        won\'t stop hurting…\n
+    </string>
+    <!-- Functional Names -->
+    <string name="sequenceStorageIntentName">sequenceStorageIntentName</string>
+    <string name="listItemScreenResultName">listItemScreenResultName</string>
+    <string name="fab_return">Return</string>
+    <string name="score_activity_name">Score</string>
+    <string name="plus_sign">+</string>
+    <string name="minus_sign">-</string>
+    <string name="startCountButton">Start</string>
+    <string name="stopCountButton">Stop</string>
+    <string name="resetCountButton">Reset</string>
+    <string name="zero_string">0</string>
+    <string name="baseThreadOneDelay">400</string>
+    <string name="baseThreadTwoDelay">600</string>
+    <string name="emptyString"></string>
+    <string name="threadOneEditTextHint">Enter tick delay \n for first thread</string>
+</resources>

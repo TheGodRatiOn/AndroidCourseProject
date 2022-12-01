@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/label_string"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/smiling_face_better" />
+
+    <TextView
+        android:id="@+id/longTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:gravity="center_horizontal"
+        android:text="@string/someLongText"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintBottom_toTopOf="@id/barrierHorizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+    <TextView
+        android:id="@+id/screenTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:gravity="center_horizontal"
+        android:text="@string/screenTitle"
+        app:layout_constraintBottom_toTopOf="@id/barrierHorizontal"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrierHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="imageView, longTextView, screenTitleTextView" />
+
+    <Button
+        android:id="@+id/buttonNat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/natNum"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonFib"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewNat"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <Button
+        android:id="@+id/buttonCol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/colNum"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/buttonFib"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCol"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <Button
+        android:id="@+id/buttonFib"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/fibNum"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonCol"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/buttonNat"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFib"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <TextView
+        android:id="@+id/textViewNat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="0"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/buttonNat"
+        app:layout_constraintEnd_toStartOf="@id/textViewFib"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/barrierHorizontal" />
+
+    <TextView
+        android:id="@+id/textViewFib"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        tools:text="1"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/buttonFib"
+        app:layout_constraintEnd_toStartOf="@id/textViewCol"
+        app:layout_constraintStart_toEndOf="@id/textViewNat"
+        app:layout_constraintTop_toBottomOf="@id/barrierHorizontal" />
+
+    <TextView
+        android:id="@+id/textViewCol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="7"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/buttonCol"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/textViewFib"
+        app:layout_constraintTop_toBottomOf="@id/barrierHorizontal" />
+</androidx.constraintlayout.widget.ConstraintLayout>

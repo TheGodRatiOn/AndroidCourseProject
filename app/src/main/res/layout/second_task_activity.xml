@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/threadOneCounter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:textSize="18sp"
+        android:text="@string/zero_string"
+        app:layout_constraintEnd_toStartOf="@+id/firstThreadDelay"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/threadTwoCounter"/>
+
+    <EditText
+        android:id="@+id/firstThreadDelay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:textSize="18sp"
+        android:inputType="numberDecimal"
+        android:minWidth="48dp"
+        android:hint="@string/emptyString"
+        android:importantForAutofill="no"
+        android:text="@string/baseThreadOneDelay"
+        app:layout_constraintBottom_toTopOf="@+id/secondThreadDelay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/threadOneCounter"
+        />
+
+    <TextView
+        android:id="@+id/threadTwoCounter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="12dp"
+        android:paddingTop="12dp"
+        android:textSize="18sp"
+        android:text="@string/zero_string"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/threadOneCounter"
+        app:layout_constraintBottom_toTopOf="@id/firstThreadProgressbar"
+        app:layout_constraintEnd_toStartOf="@id/secondThreadDelay"/>
+
+    <EditText
+        android:id="@+id/secondThreadDelay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:minWidth="48dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:text="@string/baseThreadTwoDelay"
+        android:textSize="18sp"
+        android:importantForAutofill="no"
+        app:layout_constraintBottom_toTopOf="@id/firstThreadProgressbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/threadTwoCounter"
+        app:layout_constraintTop_toBottomOf="@id/firstThreadDelay" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/buttonBarrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="secondThreadDelay, threadTwoCounter"
+        />
+
+    <ProgressBar
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginEnd="70dp"
+        android:progressTint="@color/corvette_yellow"
+        android:progressBackgroundTint="@color/ferrari_red"
+        android:id="@+id/firstThreadProgressbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        app:layout_constraintStart_toStartOf="@id/threadOneCounter"
+        app:layout_constraintTop_toBottomOf="@id/buttonBarrier"
+        app:layout_constraintEnd_toEndOf="@id/firstThreadDelay"
+        app:layout_constraintBottom_toTopOf="@id/secondThreadProgressbar"
+        />
+
+    <ProgressBar
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginEnd="70dp"
+        android:progressTint="@color/corvette_yellow"
+        android:progressBackgroundTint="@color/british_racing_green"
+        android:id="@+id/secondThreadProgressbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        app:layout_constraintStart_toStartOf="@id/firstThreadProgressbar"
+        app:layout_constraintTop_toBottomOf="@id/firstThreadProgressbar"
+        app:layout_constraintEnd_toEndOf="@id/firstThreadProgressbar"
+        app:layout_constraintBottom_toTopOf="@id/contentBarrier"
+        />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/contentBarrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="firstThreadProgressbar, secondThreadProgressbar"
+        />
+
+    <Button
+        android:id="@+id/startButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/startCountButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/contentBarrier"
+        app:layout_constraintBottom_toTopOf="@id/stopButton"/>
+
+    <Button
+        android:id="@+id/stopButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/stopCountButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/startButton"
+        app:layout_constraintBottom_toTopOf="@id/resetButton"/>
+
+    <Button
+        android:id="@+id/resetButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/resetCountButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stopButton" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
