@@ -11,18 +11,20 @@ import java.util.concurrent.atomic.AtomicLong
 class ThreadRunner(
     private val threadTextView: TextView,
     private val threadProgressBar: ProgressBar,
-    private var isRunning: Boolean,
+    @Volatile private var isRunning: Boolean,
     private var numCounter: Int,
     private var threadDelay: AtomicLong,
     private val threadHandler: Handler = Handler(Looper.getMainLooper())
 ) : Runnable {
+    @Volatile
+    private var toTerminate: Boolean = false
+
     override fun run() {
         try {
             isRunning = true
             while (true) {
-
-                checkToContinueLoop()
                 sleep(threadDelay.get())
+                checkToContinueLoop()
                 numCounter++
 
                 threadHandler.post {
@@ -30,6 +32,10 @@ class ThreadRunner(
                     if (numCounter % 10 == 0) {
                         threadProgressBar.incrementProgressBy(1)
                     }
+                }
+
+                if (toTerminate) {
+                    break
                 }
             }
         } catch (e: InterruptedException) {
@@ -64,11 +70,18 @@ class ThreadRunner(
             threadTextView.text = numCounter.toString()
             threadProgressBar.progress = 0
         }
+        suspendThread()
     }
 
     @Synchronized
     fun resumeThread() {
         isRunning = true
         (this as Object).notify()
+    }
+
+    @Synchronized
+    fun stopExecution() {
+        resumeThread()
+        toTerminate = true
     }
 }

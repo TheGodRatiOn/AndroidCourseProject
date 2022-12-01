@@ -9,11 +9,13 @@ import kotlin.concurrent.thread
 class ThreadManager(
     firstThreadTextView: TextView,
     secondThreadTextView: TextView,
-    firstThreadProgressBar : ProgressBar,
+    firstThreadProgressBar: ProgressBar,
     secondThreadProgressBar: ProgressBar
 ) {
-    private var firstThreadRunner: ThreadRunner = getThreadRunner(firstThreadTextView, firstThreadProgressBar, 400)
-    private var secondThreadRunner: ThreadRunner = getThreadRunner(secondThreadTextView, secondThreadProgressBar, 600)
+    private var firstThreadRunner: ThreadRunner =
+        getThreadRunner(firstThreadTextView, firstThreadProgressBar, 400)
+    private var secondThreadRunner: ThreadRunner =
+        getThreadRunner(secondThreadTextView, secondThreadProgressBar, 600)
     private var started: Boolean = false
 
     fun setFirstThreadDelay(long: Long) {
@@ -24,7 +26,7 @@ class ThreadManager(
         secondThreadRunner.setThreadDelay(long)
     }
 
-    fun startOrResume(): Unit {
+    fun startOrResume() {
         if (started) {
             resumeCounting()
         } else {
@@ -61,10 +63,10 @@ class ThreadManager(
 
 
     fun resetCounting() {
-        terminateThreads()
+        resetThreads()
     }
 
-    private fun terminateThreads() {
+    private fun resetThreads() {
         firstThreadRunner.resetThread()
         secondThreadRunner.resetThread()
     }
@@ -73,7 +75,11 @@ class ThreadManager(
         return firstThreadRunner.isRunning() and secondThreadRunner.isRunning()
     }
 
-    private fun getThreadRunner(textView: TextView, progressBar: ProgressBar, delay: Long): ThreadRunner {
+    private fun getThreadRunner(
+        textView: TextView,
+        progressBar: ProgressBar,
+        delay: Long
+    ): ThreadRunner {
         return ThreadRunner(
             threadTextView = textView,
             threadProgressBar = progressBar,
@@ -85,5 +91,10 @@ class ThreadManager(
 
     fun isStarted(): Boolean {
         return started
+    }
+
+    fun terminateThreads() {
+        firstThreadRunner.stopExecution()
+        secondThreadRunner.stopExecution()
     }
 }

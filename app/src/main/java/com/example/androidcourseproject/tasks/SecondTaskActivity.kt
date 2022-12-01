@@ -120,4 +120,9 @@ class SecondTaskActivity : AppCompatActivity() {
         }
         super.onResume()
     }
+
+    override fun onDestroy() {
+        activityThreadManager.terminateThreads()
+        super.onDestroy()
+    }
 }
